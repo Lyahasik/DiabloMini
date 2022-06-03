@@ -9,51 +9,34 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1401574015351142}
+  m_RootGameObject: {fileID: 1574131460673792}
   m_IsPrefabParent: 1
---- !u!1 &1401574015351142
+--- !u!1 &1574131460673792
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4902360216324622}
-  - component: {fileID: 33383149962451138}
-  - component: {fileID: 23140612539685204}
+  - component: {fileID: 4245622710975704}
+  - component: {fileID: 198023791663650796}
+  - component: {fileID: 199732119942984760}
   m_Layer: 0
-  m_Name: candle_1
+  m_Name: CandleFireParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1663729838853502
+--- !u!1 &1588418217307018
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4235437599734834}
-  - component: {fileID: 198418093342126304}
-  - component: {fileID: 199736051599897886}
-  m_Layer: 0
-  m_Name: fire particle candle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1714053489178250
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4559429984619790}
-  - component: {fileID: 108247347704864192}
+  - component: {fileID: 4052356968058382}
+  - component: {fileID: 108888301823866144}
   m_Layer: 0
   m_Name: candle light
   m_TagString: Untagged
@@ -61,94 +44,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4235437599734834
+--- !u!4 &4052356968058382
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663729838853502}
-  m_LocalRotation: {x: -1.117904e-39, y: -0.9438874, z: 3.91156e-40, w: 0.33026743}
-  m_LocalPosition: {x: -0.00094048644, y: 1.1899997, z: 0.0020277235}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4559429984619790}
-  m_Father: {fileID: 4902360216324622}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4559429984619790
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1714053489178250}
+  m_GameObject: {fileID: 1588418217307018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.382, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4235437599734834}
+  m_Father: {fileID: 4245622710975704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4902360216324622
+--- !u!4 &4245622710975704
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401574015351142}
+  m_GameObject: {fileID: 1574131460673792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4235437599734834}
+  - {fileID: 4052356968058382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23140612539685204
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401574015351142}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 750eba4470988264692cdc72d2326ecb, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33383149962451138
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401574015351142}
-  m_Mesh: {fileID: 4300112, guid: 4e15996ba1e2f4b4392985ef6ac6b27c, type: 3}
---- !u!108 &108247347704864192
+--- !u!108 &108888301823866144
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1714053489178250}
+  m_GameObject: {fileID: 1588418217307018}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
@@ -179,12 +107,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!198 &198418093342126304
+--- !u!198 &198023791663650796
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663729838853502}
+  m_GameObject: {fileID: 1574131460673792}
   serializedVersion: 5
   lengthInSec: 5
   simulationSpeed: 1
@@ -239,7 +167,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1149066704
+  randomSeed: -165457021
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3540,13 +3468,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199736051599897886
+--- !u!199 &199732119942984760
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663729838853502}
+  m_GameObject: {fileID: 1574131460673792}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
