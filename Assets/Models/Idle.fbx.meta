@@ -8,6 +8,11 @@ ModelImporter:
     second: mixamo.com
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ganfaul_Body
+    second: {fileID: 2100000, guid: ece857a44132dc947806916122de0c3d, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ganfaul_diffuse
