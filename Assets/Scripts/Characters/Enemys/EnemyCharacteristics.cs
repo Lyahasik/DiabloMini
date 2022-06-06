@@ -4,18 +4,19 @@ namespace Characters.Enemys
 {
     public class EnemyCharacteristics : MonoBehaviour, IAttackingCharacteristics, ITakingDamage
     {
-        [SerializeField] private int _health;
+        [SerializeField] private int health;
         
-        [SerializeField] private int _damage;
-        public int Damage => _damage;
+        [SerializeField] private int damage;
+        public int Damage => damage;
 
         public void TakeDamage(int value)
         {
-            _health -= value;
+            health -= value;
             
-            Debug.Log("Enemy: " + _health);
+            EventManagerUIBasicCharacteristics.IncreaseRage(value);
+            Debug.Log("Enemy: " + health);
             
-            if (_health <= 0)
+            if (health <= 0)
                 Die();
         }
 

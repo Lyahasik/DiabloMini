@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 using Characters.Player;
@@ -10,7 +11,12 @@ namespace Scene
         private PlayerMoving _playerMoving;
         private PlayerPursuitTarget _pursuitTarget;
         private Camera _camera;
-        
+
+        private void OnEnable()
+        {
+            EventManagerUIBasicCharacteristics.OnDiePlayer += DiePlayer;
+        }
+
         void Start()
         {
             _playerMoving = FindObjectOfType<PlayerMoving>();
@@ -43,6 +49,11 @@ namespace Scene
                     _playerMoving.SetDestination(hit.point);
                 }
             }
+        }
+
+        private void DiePlayer()
+        {
+            GetComponent<MouseClickController>().enabled = false;
         }
     }
 }

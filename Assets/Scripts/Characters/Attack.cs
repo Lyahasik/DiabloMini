@@ -16,7 +16,7 @@ namespace Characters
         private IAttackingCharacteristics _attackingCharacteristics;
         private Animator _animator;
     
-        [SerializeField] private GameObject _weapon;
+        [SerializeField] private GameObject weapon;
         private WeaponAttack _weaponAttack;
 
         private GameObject _target;
@@ -26,7 +26,7 @@ namespace Characters
             _attackingCharacteristics = GetComponent<IAttackingCharacteristics>();
             _animator = GetComponent<Animator>();
         
-            _weaponAttack = _weapon.GetComponent<WeaponAttack>();
+            _weaponAttack = weapon.GetComponent<WeaponAttack>();
             _weaponAttack.Damage = _attackingCharacteristics.Damage;
             _weaponAttack.DelayAttack = _animator.FindAnimationClip("Attack").length - DelayTimeReduction;
         }

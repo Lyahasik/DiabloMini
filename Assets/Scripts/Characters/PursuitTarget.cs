@@ -17,7 +17,7 @@ namespace Characters
         protected GameObject _target;
         protected bool _isTargetAchieved;
         
-        [SerializeField] private float _stoppingDistance;
+        [SerializeField] private float stoppingDistance;
 
         protected void Pursue()
         {
@@ -33,13 +33,13 @@ namespace Characters
             {
                 float distantion = Vector3.Magnitude(_target.transform.position - transform.position);
             
-                if (distantion > _stoppingDistance)
+                if (distantion > stoppingDistance)
                 {
                     StartMoving();
                 }
             }
             else if (!_navMeshAgent.pathPending
-                     && _navMeshAgent.remainingDistance <= _stoppingDistance)
+                     && _navMeshAgent.remainingDistance <= stoppingDistance)
             {
                 StopMoving();
             }

@@ -1205,9 +1205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b61aa5547824c24da7a96bdb122374e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stoppingDistance: 3.3
-  _visibilityDistance: 20
-  _viewingAngle: 10
+  stoppingDistance: 3.4
+  visibilityDistance: 10
+  viewingAngle: 70
 --- !u!114 &2098669162213492476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,8 +1220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b02b7233b04984194ed6fa15a766c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
-  _damage: 3
+  health: 50
+  damage: 7
 --- !u!114 &4313377384339791845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1697b804a5925249b6bf0c049f5d288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 842398666689248199}
+  weapon: {fileID: 842398666689248199}
 --- !u!1 &7625679927852976379
 GameObject:
   m_ObjectHideFlags: 0

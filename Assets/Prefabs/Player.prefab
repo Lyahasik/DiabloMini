@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1697b804a5925249b6bf0c049f5d288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 8446725805038625986}
+  weapon: {fileID: 8446725805038625986}
 --- !u!114 &1281730649499550210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,8 +556,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ee1ddd5bc1669408423c1c49dd050a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _damage: 15
+  maxHealth: 100
+  maxRage: 50
+  furyPerSecond: 2
+  damage: 15
 --- !u!114 &6059827952364677625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb067b35fd539c941894eda41ba4f4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stoppingDistance: 4
+  stoppingDistance: 4
 --- !u!1 &1344380095599818918
 GameObject:
   m_ObjectHideFlags: 0

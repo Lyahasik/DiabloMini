@@ -7,12 +7,21 @@ namespace Characters.Enemys
 {
     public class EnemyPursuitTarget : PursuitTarget
     {
-        private bool _isTargetAchieved;
         private bool _isLockedTarget;
 
-        [SerializeField] private float _visibilityDistance;
-        [SerializeField] private float _viewingAngle;
-
+        [SerializeField] private float visibilityDistance;
+        [SerializeField] private float viewingAngle;
+        
+        private void OnEnable()
+        {
+            EventManagerUIBasicCharacteristics.OnDiePlayer += DiePlayer;
+        }
+        
+        private void OnDisable()
+        {
+            EventManagerUIBasicCharacteristics.OnDiePlayer -= DiePlayer;
+        }
+        
         private void Start()
         {
             _attack = GetComponent<Attack>();
@@ -42,8 +51,8 @@ namespace Characters.Enemys
             
             float angle = Vector3.Angle(directionPlayer, transform.forward);
 
-            if (Vector3.Magnitude(directionPlayer) < _visibilityDistance
-                && angle < _viewingAngle
+            if (Vector3.Magnitude(directionPlayer) < visibilityDistance
+                && angle < viewingAngle
                 && OverlappingView())
             {
                 StartMoving();
@@ -61,6 +70,12 @@ namespace Characters.Enemys
             }
 
             return false;
+        }
+
+        private void DiePlayer()
+        {
+            GetComponent<EnemyPursuitTarget>().enabled = false;
+            _attack.enabled = false;
         }
     }
 }
