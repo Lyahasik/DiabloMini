@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Character.Player
+namespace Characters.Player
 {
-    public class PlayerCharacteristics : MonoBehaviour, ITakingDamage
+    public class PlayerCharacteristics : MonoBehaviour, IAttackingCharacteristics, ITakingDamage
     {
         [SerializeField] private int _maxHealth;
         

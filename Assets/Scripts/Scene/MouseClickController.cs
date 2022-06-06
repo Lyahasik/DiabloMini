@@ -1,21 +1,20 @@
 using UnityEngine;
 
-using Character;
-using Character.Player;
-using Character.Enemy;
+using Characters.Player;
+using Characters.Enemys;
 
 namespace Scene
 {
     public class MouseClickController : MonoBehaviour
     {
         private PlayerMoving _playerMoving;
-        private PursuitTarget _pursuitTarget;
+        private PlayerPursuitTarget _pursuitTarget;
         private Camera _camera;
         
         void Start()
         {
             _playerMoving = FindObjectOfType<PlayerMoving>();
-            _pursuitTarget = FindObjectOfType<PursuitTarget>();
+            _pursuitTarget = FindObjectOfType<PlayerPursuitTarget>();
             _camera = Camera.main;
         }
 

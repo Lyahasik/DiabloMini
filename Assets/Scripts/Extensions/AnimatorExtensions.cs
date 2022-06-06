@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Extension
+namespace Extensions
 {
     public static class AnimatorExtension
     {

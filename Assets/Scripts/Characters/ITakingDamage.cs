@@ -1,4 +1,4 @@
-namespace Character
+namespace Characters
 {
     public interface ITakingDamage
     {

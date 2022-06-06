@@ -1,21 +1,21 @@
 using UnityEngine;
 
-using Weapon;
-using Extension;
+using Weapons;
+using Extensions;
 
-namespace Character.Player
+namespace Characters
 {
-    [RequireComponent(typeof(PlayerCharacteristics))]
+    [RequireComponent(typeof(IAttackingCharacteristics))]
     [RequireComponent(typeof(Animator))]
-    public class PlayerAttack : MonoBehaviour
+    public class Attack : MonoBehaviour
     {
         private const float DelayTimeReduction = 0.2f;
         
         private readonly int AnimationAttackId = Animator.StringToHash("Attack");
-        
-        private PlayerCharacteristics _playerCharacteristics;
+    
+        private IAttackingCharacteristics _attackingCharacteristics;
         private Animator _animator;
-        
+    
         [SerializeField] private GameObject _weapon;
         private WeaponAttack _weaponAttack;
 
@@ -23,17 +23,23 @@ namespace Character.Player
 
         void Start()
         {
-            _playerCharacteristics = GetComponent<PlayerCharacteristics>();
+            _attackingCharacteristics = GetComponent<IAttackingCharacteristics>();
             _animator = GetComponent<Animator>();
-            
+        
             _weaponAttack = _weapon.GetComponent<WeaponAttack>();
-            _weaponAttack.Damage = _playerCharacteristics.Damage;
+            _weaponAttack.Damage = _attackingCharacteristics.Damage;
             _weaponAttack.DelayAttack = _animator.FindAnimationClip("Attack").length - DelayTimeReduction;
         }
 
         private void Update()
         {
             CheckTarget();
+        }
+
+        private void CheckTarget()
+        {
+            if (!_target)
+                StopAttack();
         }
 
         public void SetTarget(GameObject gameObject)
@@ -48,13 +54,7 @@ namespace Character.Player
             _target = null;
         }
 
-        private void CheckTarget()
-        {
-            if (!_target)
-                StopAttack();
-        }
-
-        public void StartAttack()
+        private void StartAttack()
         {
             if (!_target)
                 return;
@@ -63,7 +63,7 @@ namespace Character.Player
             _animator.SetBool(AnimationAttackId, true);
         }
 
-        public void StopAttack()
+        private void StopAttack()
         {
             _weaponAttack.IsAttacking = false;
             _animator.SetBool(AnimationAttackId, false);

@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 3058888606561317642}
   - component: {fileID: 7625679927852976382}
   - component: {fileID: 2098669162213492476}
-  - component: {fileID: 2051527979212596942}
+  - component: {fileID: 4313377384339791845}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -1205,8 +1205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b61aa5547824c24da7a96bdb122374e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stoppingDistance: 3.3
   _visibilityDistance: 20
-  _viewingAngle: 70
+  _viewingAngle: 10
 --- !u!114 &2098669162213492476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,7 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 50
   _damage: 3
---- !u!114 &2051527979212596942
+--- !u!114 &4313377384339791845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1230,7 +1231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7625679927852976377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bc4558529b13124d9ac0081ceaafc27, type: 3}
+  m_Script: {fileID: 11500000, guid: a1697b804a5925249b6bf0c049f5d288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 842398666689248199}

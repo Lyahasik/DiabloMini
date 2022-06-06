@@ -1,9 +1,9 @@
 using UnityEngine;
 
-using Character;
-using Character.Enemy;
+using Characters;
+using Characters.Enemys;
 
-namespace Weapon
+namespace Weapons
 {
     public class WeaponAttack : MonoBehaviour
     {

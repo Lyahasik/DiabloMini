@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Character.Enemy
+namespace Characters.Enemys
 {
-    public class EnemyCharacteristics : MonoBehaviour, ITakingDamage
+    public class EnemyCharacteristics : MonoBehaviour, IAttackingCharacteristics, ITakingDamage
     {
         [SerializeField] private int _health;
         

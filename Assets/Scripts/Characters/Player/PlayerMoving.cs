@@ -2,9 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-using Character.Enemy;
-
-namespace Character.Player
+namespace Characters.Player
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
