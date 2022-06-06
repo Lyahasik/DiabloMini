@@ -1,22 +1,24 @@
-using Player;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Enemy
+using Character.Player;
+
+namespace Character.Enemy
 {
+    [RequireComponent(typeof(EnemyAttack))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
     public class EnemyMoving : MonoBehaviour
     {
         private readonly int AnimationMoveId  = Animator.StringToHash("Move");
 
+        private EnemyAttack _enemyAttack;
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
 
-        private GameObject _player;
+        private GameObject _target;
 
-        private bool _isMoving;
+        private bool _isTargetAchieved;
         private bool _isLockedTarget;
 
         [SerializeField] private float _visibilityDistance;
@@ -24,10 +26,11 @@ namespace Enemy
 
         private void Start()
         {
+            _enemyAttack = GetComponent<EnemyAttack>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
 
-            _player = FindObjectOfType<PlayerMovingController>().gameObject;
+            _target = FindObjectOfType<PlayerCharacteristics>().gameObject;
 
             _navMeshAgent.stoppingDistance = 1.0f;
         }
@@ -41,7 +44,7 @@ namespace Enemy
 
         private void DestinationBeenReached()
         {
-            if (_isMoving)
+            if (!_isTargetAchieved)
             {
                 if (_navMeshAgent.remainingDistance > 3.0f)
                     return;
@@ -50,7 +53,7 @@ namespace Enemy
             }
             else if (_isLockedTarget)
             {
-                float distantion = Vector3.Magnitude(_player.transform.position - transform.position);
+                float distantion = Vector3.Magnitude(_target.transform.position - transform.position);
             
                 if (distantion > 3.0f)
                 {
@@ -64,7 +67,7 @@ namespace Enemy
             if (_isLockedTarget)
                 return;
             
-            Vector3 directionPlayer = _player.transform.position - transform.position;
+            Vector3 directionPlayer = _target.transform.position - transform.position;
             directionPlayer.y = 0;
             
             float angle = Vector3.Angle(directionPlayer, transform.forward);
@@ -80,35 +83,36 @@ namespace Enemy
 
         private void GoToPlayer()
         {
-            if (!_isMoving)
+            if (_isTargetAchieved)
                 return;
             
-            _navMeshAgent.SetDestination(_player.transform.position);
+            _navMeshAgent.SetDestination(_target.transform.position);
         }
 
         private void StartMoving()
         {
             _navMeshAgent.isStopped = false;
-            
             _animator.SetBool(AnimationMoveId, true);
+            _isTargetAchieved = false;
             
-            _isMoving = true;
+            _enemyAttack.StopAttack();
         }
 
         private void StopMoving()
         {
+            transform.LookAt(_target.transform);
+            _enemyAttack.StartAttack();
+            
             _navMeshAgent.isStopped = true;
-            
             _animator.SetBool(AnimationMoveId, false);
-            
-            _isMoving = false;
+            _isTargetAchieved = true;
         }
 
         private bool OverlappingView()
         {
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, _player.transform.position, out hit)
-                && hit.transform.name == _player.transform.name)
+            if (Physics.Linecast(transform.position, _target.transform.position, out hit)
+                && hit.transform.name == _target.transform.name)
             {
                 return true;
             }
