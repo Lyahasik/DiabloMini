@@ -14,7 +14,8 @@ namespace Characters.Player
 
         private void Update()
         {
-            if (!_target)
+            if (_isFreeze
+                || !_target)
                 return;
             
             CheckTargetBeenReached();

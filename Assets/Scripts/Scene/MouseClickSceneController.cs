@@ -1,20 +1,24 @@
-using System;
 using UnityEngine;
 
 using Characters.Player;
 using Characters.Enemys;
+using UI;
 
 namespace Scene
 {
-    public class MouseClickController : MonoBehaviour
+    public class MouseClickSceneController : MonoBehaviour
     {
         private PlayerMoving _playerMoving;
         private PlayerPursuitTarget _pursuitTarget;
         private Camera _camera;
 
+        private MainBar _mainBar;
+
         private void OnEnable()
         {
             EventManagerUIBasicCharacteristics.OnDiePlayer += DiePlayer;
+
+            _mainBar = FindObjectOfType<MainBar>();
         }
 
         void Start()
@@ -34,6 +38,9 @@ namespace Scene
 
         private void CheckObjectHitPoint()
         {
+            if (_mainBar.HitMouse())
+                return;
+            
             Ray rayMouseClick = _camera.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
@@ -53,7 +60,7 @@ namespace Scene
 
         private void DiePlayer()
         {
-            GetComponent<MouseClickController>().enabled = false;
+            GetComponent<MouseClickSceneController>().enabled = false;
         }
     }
 }

@@ -74,8 +74,8 @@ namespace Characters.Enemys
 
         private void DiePlayer()
         {
+            _attack.ResetTarget();
             GetComponent<EnemyPursuitTarget>().enabled = false;
-            _attack.enabled = false;
         }
     }
 }

@@ -8,6 +8,10 @@ namespace UI
     {
         [SerializeField] private Image valueImageHealthBar;
         [SerializeField] private Image valueImageRageBar;
+
+        private RectTransform _rectTransform;
+        private float _leftBorder;
+        private float _rightBorder;
         
         private int _maxHealth;
         private int _currentHealth;
@@ -24,6 +28,10 @@ namespace UI
 
         private void Start()
         {
+            _rectTransform = GetComponent<RectTransform>();
+            _leftBorder = Screen.width * 0.5f - _rectTransform.rect.width * 0.5f;
+            _rightBorder = Screen.width * 0.5f + _rectTransform.rect.width * 0.5f;
+            
             PlayerCharacteristics playerCharacteristics = FindObjectOfType<PlayerCharacteristics>();
             
             _maxHealth = playerCharacteristics.MaxHealth;
@@ -52,6 +60,18 @@ namespace UI
             _currentRage = Mathf.Clamp(_currentRage - value, 0, _maxRage);
             
             valueImageRageBar.fillAmount = (float) _currentRage / _maxRage;
+        }
+
+        public bool HitMouse()
+        {
+            Vector2 mousePosition = Input.mousePosition;
+
+            if (_rectTransform.rect.height > mousePosition.y
+                && mousePosition.x > _leftBorder
+                && mousePosition.x < _rightBorder)
+                return true;
+            
+            return false;
         }
     }
 }

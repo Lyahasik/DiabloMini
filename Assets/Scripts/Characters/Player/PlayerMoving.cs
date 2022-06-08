@@ -15,6 +15,17 @@ namespace Characters.Player
         private Animator _animator;
 
         private bool _isMoving;
+        
+        private bool _isFreeze;
+        public bool IsFreeze
+        {
+            set
+            {
+                _isFreeze = value;
+                
+                _navMeshAgent.isStopped = _isFreeze;
+            }
+        }
 
         private void Start()
         {
@@ -29,9 +40,10 @@ namespace Characters.Player
 
         private void DestinationBeenReached()
         {
-            if (!_isMoving)
+            if (_isFreeze
+                || !_isMoving)
                 return;
-            
+
             if (!_navMeshAgent.pathPending
                 && !Single.IsInfinity(_navMeshAgent.remainingDistance)
                 && _navMeshAgent.remainingDistance <= StoppingDistance)
@@ -42,6 +54,9 @@ namespace Characters.Player
 
         public void SetDestination(Vector3 position)
         {
+            if (_isFreeze)
+                return;
+            
             _navMeshAgent.SetDestination(position);
             
             StartMoving();

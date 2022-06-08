@@ -6,6 +6,10 @@ namespace Characters.Player
 {
     public class PlayerCharacteristics : MonoBehaviour, IAttackingCharacteristics, ITakingDamage
     {
+        private readonly int AnimationDieId = Animator.StringToHash("Die");
+
+        private Animator _animator;
+        
         private const float DelayLossRage = 1.0f;
         
         [SerializeField] private int maxHealth;
@@ -15,7 +19,12 @@ namespace Characters.Player
         [SerializeField] private int damage;
         public int MaxHealth => maxHealth;
         public int MaxRage => maxRage;
-        public int Damage => damage;
+        public int CurrentRage => _currentRage;
+        public int Damage
+        {
+            get => damage;
+            set => damage = value;
+        }
 
         private int _currentHealth;
         private int _currentRage;
@@ -36,6 +45,8 @@ namespace Characters.Player
 
         private void Start()
         {
+            _animator = GetComponent<Animator>();
+            
             _currentHealth = maxHealth;
             _currentRage = 0;
 
@@ -82,7 +93,8 @@ namespace Characters.Player
         {
             EventManagerUIBasicCharacteristics.DiePlayer();
             
-            Destroy(gameObject);
+            Debug.Log("Die");
+            _animator.SetTrigger(AnimationDieId);
         }
     }
 }

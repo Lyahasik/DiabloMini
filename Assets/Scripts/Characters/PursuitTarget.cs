@@ -17,11 +17,23 @@ namespace Characters
         protected GameObject _target;
         protected bool _isTargetAchieved;
         
+        protected bool _isFreeze;
+        public bool IsFreeze
+        {
+            set
+            {
+                _isFreeze = value;
+                
+                _navMeshAgent.isStopped = _isTargetAchieved ? true : _isFreeze;
+            }
+        }
+        
         [SerializeField] private float stoppingDistance;
 
         protected void Pursue()
         {
-            if (_isTargetAchieved)
+            if (_isFreeze
+                || _isTargetAchieved)
                 return;
 
             _navMeshAgent.SetDestination(_target.transform.position);
@@ -29,6 +41,9 @@ namespace Characters
 
         protected void CheckTargetBeenReached()
         {
+            if (_isFreeze)
+                return;
+            
             if (_isTargetAchieved)
             {
                 float distantion = Vector3.Magnitude(_target.transform.position - transform.position);

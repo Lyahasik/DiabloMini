@@ -20,6 +20,12 @@ namespace Characters
         private WeaponAttack _weaponAttack;
 
         private GameObject _target;
+        
+        private bool _isFreeze;
+        public bool IsFreeze
+        {
+            set => _isFreeze = value;
+        }
 
         void Start()
         {
@@ -38,12 +44,18 @@ namespace Characters
 
         private void CheckTarget()
         {
+            if (_isFreeze)
+                return;
+            
             if (!_target)
                 StopAttack();
         }
 
         public void SetTarget(GameObject gameObject)
         {
+            if (_isFreeze)
+                return;
+            
             _target = gameObject;
             
             StartAttack();
